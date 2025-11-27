@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment variables
+.env
+.env.local
+
+# DuckDB database files
+*.duckdb
+*.duckdb.wal
+data/*.duckdb
+
+# Data files (large datasets)
+data/
+*.parquet
+*.csv
+!config/tickers.txt
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# ML models (optional - you might want to commit small models)
+# models/*.json
+# models/*.pkl
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/

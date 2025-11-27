@@ -1,0 +1,76 @@
+# Pipeline configuration settings
+
+# Data sources and endpoints
+eodhd:
+  base_url: "https://eodhd.com/api"
+
+  # Endpoints you'll use (reference for your implementation)
+  endpoints:
+    eod_prices: "/eod/{symbol}"           # Historical EOD prices
+    fundamentals: "/fundamentals/{symbol}" # Company fundamentals
+    bulk_eod: "/eod-bulk-last-day/{exchange}" # Bulk EOD data
+
+  # Exchanges to fetch (start with US markets)
+  exchanges:
+    - "US"      # US stocks (NYSE, NASDAQ)
+    # - "LSE"   # London (future expansion)
+    # - "TO"    # Toronto (future expansion)
+
+# S3 partitioning strategy
+s3:
+  partitioning:
+    prices: "year={year}/month={month}"
+    fundamentals: "statement_type={type}/year={year}"
+    features: "year={year}/month={month}"
+
+  file_format: "parquet"
+  compression: "snappy"  # Good balance of speed/compression
+
+# DuckDB table schemas (guidance for your implementation)
+database:
+  tables:
+    - prices
+    - income_statement
+    - balance_sheet
+    - cash_flow
+    - ml_features
+
+  # Indexing strategy for performance
+  indexes:
+    - "prices(symbol, date)"
+    - "income_statement(symbol, fiscal_date)"
+
+# Feature engineering settings
+features:
+  # Price-based features
+  technical:
+    - returns_1d
+    - returns_5d
+    - returns_20d
+    - volatility_20d
+    - volume_20d_avg
+
+  # Fundamental ratios for value investing
+  fundamental:
+    - pe_ratio
+    - pb_ratio
+    - ps_ratio
+    - debt_to_equity
+    - current_ratio
+    - roe
+    - roa
+    - fcf_yield
+    - earnings_yield
+
+  # Value investing signals
+  value_signals:
+    - piotroski_score  # Quality score (0-9)
+    - graham_number    # Intrinsic value estimate
+    - magic_formula_rank  # Greenblatt's formula
+
+# ML model configuration
+model:
+  target: "is_value_stock"  # Binary classification
+  features_to_use: "all"     # Or specify subset
+  test_size: 0.2
+  random_state: 42

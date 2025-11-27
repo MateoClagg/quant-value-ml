@@ -1,0 +1,17 @@
+# Sample tickers to get started
+# Replace with your full 1000 ticker list
+# Format: One ticker per line, exchange suffix optional (e.g., AAPL.US)
+
+AAPL
+MSFT
+GOOGL
+AMZN
+NVDA
+META
+TSLA
+BRK.B
+V
+JPM
+
+# TODO: Add your full 1000 ticker list here
+# You can export from your previous pipeline or use a screener

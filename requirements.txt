@@ -1,0 +1,39 @@
+# Core dependencies for EODHD + DuckDB pipeline
+# Python 3.10+ required
+
+# Database
+duckdb>=0.9.0
+
+# Data processing
+polars>=0.20.0          # Fast DataFrame library (alternative to pandas)
+pandas>=2.0.0           # Traditional DataFrame library
+pyarrow>=14.0.0         # Parquet file support
+
+# HTTP & API
+requests>=2.31.0        # Synchronous HTTP client
+aiohttp>=3.9.0          # Async HTTP client for faster batch requests
+httpx>=0.25.0           # Modern HTTP client (alternative)
+
+# AWS S3
+boto3>=1.34.0           # AWS SDK
+s3fs>=2024.0.0          # S3 filesystem interface for DuckDB
+
+# ML & Modeling
+xgboost>=2.0.0          # Gradient boosting for classification
+scikit-learn>=1.4.0     # ML utilities & preprocessing
+numpy>=1.24.0           # Numerical computing
+
+# Configuration & Utils
+python-dotenv>=1.0.0    # Environment variable management
+pyyaml>=6.0.0           # YAML config files
+tenacity>=8.2.0         # Retry logic for API calls
+
+# Development & Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0  # For async testing
+black>=23.0.0           # Code formatting
+ruff>=0.1.0             # Fast linting
+
+# Optional: Jupyter for analysis
+jupyter>=1.0.0
+ipykernel>=6.25.0
